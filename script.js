@@ -6,4 +6,12 @@ items.forEach(item => {
         document.querySelector(".active").classList.remove("active");
         item.classList.add("active");
     })
-})
+});
+
+
+const postBox = document.getElementById("postBox");
+
+postBox.addEventListener("input", () => {
+    postBox.style.height = "auto";                     // reset height
+    postBox.style.height = postBox.scrollHeight + "px"; // grow based on content
+});
