@@ -7,11 +7,20 @@
     text-decoration: none;
 }
 :root{
-    --bg-color: #FBFCF8;
-    --second-bg-color: #F2F0EF;
+    --bg-color: #1a1a1a;
+    --second-bg-color: #282828;
+    --third-bg-color: #222222;
     --mute: #555555;
     --main-color: #228B22;
 }
+
+
+body{
+    background-color: var(--bg-color);
+}
+
+
+
 header{
     display: flex;
     align-items: center;
@@ -147,79 +156,126 @@ main{
 .create-p{
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     width: 700px;
     background-color: var(--second-bg-color);
-
+    border-radius:25px ;
 }
 
 .post-upper{
     display: flex;
     align-items: center;
+    margin: 5px;
+
 
 }
 
 #img-user{
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    border: 2px solid var(--mute);
-    margin: 10px 0px 10px 10px;
-    
+    margin: 15px;
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
+    border: 2px solid var(--third-bg-color);
+
 }
+
+.post-bar{
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--third-bg-color);
+    border-radius: 20px;
+}
+
 
 .post-input{
     display: flex;
     align-items: center;
-    width: 600px;
+    width: 520px;
     height: 60px;
-    background-color: var(--bg-color);
-    padding: 15px;
+    background-color: var(--third-bg-color);
+    padding: 20px;
     resize: none;
     overflow: hidden;
     font-size: 1em;
     border: none;
     color: var(--mute);
+    border-radius: 20px;
 
 }
 .post-input:focus {
     border: none;
     outline: none;
   }
+
+
 .emoji{
     color: var(--mute);
     font-size: 1.5rem;
-    margin: 10px 10px 10px 0px;
+    padding: 10px;
+
 }
 
-.post-bar{
-    margin: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bg-color);
-    border-radius: 4em ;
-}
+
 
 .post-lower{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 20px;
+    margin-top: 0;
 }
 
 
 .post-items{
-    width: 500px;
     list-style-type: none; 
-    margin: 20px;
-    padding: 0;
+
     display: flex; 
     gap: 30px;
+}
+
+
+
+.post-items li a{
+    color: white;
+    background-color: var(--third-bg-color);
+    padding: 15px ;
+    max-width: 100px;
+    border-radius: 10px;
 
 }
-.post-items li a{
-    color: var(--main-color);
+
+.post-add{  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px ;
+
+}
+
+#submit-btn{
+    background-color: var(--main-color);
+    padding: 10px;
+    border: none;
+    color: var(--third-bg-color);
+    width: 100px;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+#image{
+    color: #26d79a ;
+}
+#video{
+    color: #5091fa ;
+}
+#poll{
+    color: #de726d ;
+}
+#public{
+    color: #efbf65 ;
 }
 
 

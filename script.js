@@ -15,3 +15,8 @@ postBox.addEventListener("input", () => {
     postBox.style.height = "auto";                     // reset height
     postBox.style.height = postBox.scrollHeight + "px"; // grow based on content
 });
+
+
+
+
+
