@@ -81,7 +81,7 @@ function renderposts(postsRend=allPosts) {
                 <span class="postf-user-name">${post.userName}</span>
             </div>
             
-            <p class"postf-cont">${post.content}</p>
+            <p class="postf-cont">${post.content}</p>
 
             <div class="post-action">
                 <button class="action-btn like-btn ${post.liked ? 'liked' : ''}">
@@ -113,7 +113,7 @@ function renderposts(postsRend=allPosts) {
             </div>
         `;
 
-        const likebtn = postEl.querySelector('.like-btn');
+        const likebtn = postfd.querySelector('.like-btn');
         const likeCount = likeBtn.querySelector('.count');
 
         likebtn.addEventListener('click', () => {
@@ -121,20 +121,85 @@ function renderposts(postsRend=allPosts) {
                 post.likes++; post.liked=true;
                 likebtn.classList.add('liked');
             } else {
-                
+                post.likes--; post.liked = false;
+                likeBtn.classList.remove('liked');
             }
+            likeCount.textContent = post.likes;
+        });
+        //comment toggle (ki nenzel 3ala el btn ywali el comment section youthor)
+        const commentToggle = postfd.querySelector('.comment-toggle');
+        const commentSection = postfd.querySelector('.comment-section');
+        const commentCount = commentToggle.querySelector('.count');
+        commentToggle.addEventListener('click', () => {
+            commentSection.style.display = commentSection.style.display === 'none' ? 'block' : 'none';
+        });
+
+        const shareBtn = postfd.querySelector('.share-btn');
+        const shareCount = shareBtn.querySelector('.count');
+        shareBtn.addEventListener('click', () => {
+            post.shares++;
+            post.shared = true;
+            shareBtn.classList.add('shared');
+            shareCount.textContent = post.shares;
+            //copie lel post
+            navigator.clipboard.writeText(post.content + "\n— Shared from Jordal");
+        });
+
+        const commentInput = postfd.querySelector('.comment-input');
+        const commentBtn = postfd.querySelector('.comment-btn');
+        const commentList = postfd.querySelector('.comment-list');
+
+        commentBtn.addEventListener('click', () => {
+            if (commentInput.value.trim()) {
+                const newComment = { user: "You", text: commentInput.value };
+                post.comments.push(newComment);
+
+                const li = document.createElement('li');
+                li.className = 'comment-item';
+                li.innerHTML = `<strong>You:</strong> ${commentInput.value}`;
+                commentList.appendChild(li);
+
+                commentCount.textContent = post.comments.length;
+                commentInput.value = '';
+            }
+        });
+        feed.appendChild(postfd);
 
 
 
-        })
-
-    }
-
-    )
-
-
-
-
-
+    });
     
 }
+
+document.getElementById('submit-btn').addEventListener('click', () => {
+    const content = postBox.value.trim();
+    if (!content) return;
+
+    const newPost = {
+        id: Date.now(),
+        userName: "You",
+        userImg: "assests/image-user.jpeg",
+        content: content,
+        likes: 0,
+        liked: false,
+        comments: []
+    };
+
+    allPosts.unshift(newPost);
+    postBox.value = '';
+    postBox.style.height = 'auto';
+
+    // If search is active, re-render with current filter
+    if (searchInput.value.trim()) {
+        searchInput.dispatchEvent(new Event('input'));
+    } else {
+        renderPosts();
+    }
+
+    feed.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
+renderposts();
+
+
