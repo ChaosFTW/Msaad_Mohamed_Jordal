@@ -12,8 +12,8 @@ items.forEach(item => {
 const postBox = document.getElementById("postBox");
 
 postBox.addEventListener("input", () => {
-    postBox.style.height = "auto";                     // reset height
-    postBox.style.height = postBox.scrollHeight + "px"; // grow based on content
+    postBox.style.height = "auto";                     
+    postBox.style.height = postBox.scrollHeight + "px"; 
 });
 
 
@@ -25,7 +25,7 @@ const postsData = [
         id: 1,
         userName: "Youssef nattoun",
         userImg: "assests/wassel.jpeg",
-        content: "Just launched my new project! Feeling excited 🚀",
+        content: "Just launched my new project! Feeling excited",
         likes: 42,
         comments: [
             { user: "Bob", text: "Congrats! Looks amazing!" },
@@ -36,7 +36,7 @@ const postsData = [
         id: 2,
         userName: "Wassel the Judge",
         userImg: "assests/image-user.jpeg",
-        content: "Allah yahdik ya Araujo ama dima Barca on top w inchalah el 9adem 5ir 💙❤️",
+        content: "Allah yahdik ya Araujo ama dima Barca on top w inchalah el 9adem 5ir",
         likes: 128,
         comments: [
             { user: "You", text: "Visca el Barca" }
@@ -52,38 +52,37 @@ const postsData = [
     }
 ];
 
+let allPosts = [...postsData]; 
 
-let allPosts = [...postsData]; // coppy 3al data mte3na
+const feed = document.getElementById('feed');
 
-const feed =document.getElementById("feed");
 
-function renderposts(postsRend=allPosts) {
-    
-    feed.innerHTML="";
-    //ken mafama 7ata post fel postdata
-    if (postsRend.length === 0) {
-        feed.innerHTML='<div class="no-results" >No Jordals for today</div>';
+function renderPosts(postsToShow = allPosts) {
+    feed.innerHTML = '';
+
+    if (postsToShow.length === 0) {
+        feed.innerHTML = '<div class="no-results">No posts found</div>';
         return;
     }
 
-    postsRend.forEach(post => {
+    postsToShow.forEach(post => {
+        
         if (!post.hasOwnProperty('shares')) post.shares = 0;
-        if (!post.hasOwnProperty('liked')) post.liked= false;
-        if (!post.hasOwnProperty('shared')) post.shared= false;
+        if (!post.hasOwnProperty('shared')) post.shared = false;
+        if (!post.hasOwnProperty('liked')) post.liked = false;
 
-        const postfd= document.createElement('div');
-        postfd.className='postf';
+        const postEl = document.createElement('div');
+        postEl.className = 'post';
 
-
-        postfd.innerHTML=`
-            <div class="postf-header">
-                <img class="postf-user-img" src="${post.userImg}" alt="${post.userName}">
-                <span class="postf-user-name">${post.userName}</span>
+        postEl.innerHTML = `
+            <div class="post-header">
+                <img class="post-user-img" src="${post.userImg}" alt="${post.userName}">
+                <span class="post-user-name">${post.userName}</span>
             </div>
-            
-            <p class="postf-cont">${post.content}</p>
+            <p class="post-content">${post.content}</p>
 
-            <div class="post-action">
+            <!-- Like + Comment + Share avec compteur -->
+            <div class="post-actions">
                 <button class="action-btn like-btn ${post.liked ? 'liked' : ''}">
                     <i class="fas fa-heart"></i>
                     <span class="count">${post.likes}</span>
@@ -95,59 +94,66 @@ function renderposts(postsRend=allPosts) {
                 </button>
 
                 <button class="action-btn share-btn ${post.shared ? 'shared' : ''}">
-                    <i class="fas fa-share-alt"></i>
+                <i class="fa-solid fa-share-from-square"></i>
                     <span class="count">${post.shares}</span>
                 </button>
             </div>
 
-            <div class="comment-section" >
+            <!-- Section commentaires -->
+            <div class="comment-section" style="display: none;">
                 <ul class="comment-list">
                     ${post.comments.map(c => 
                         `<li class="comment-item"><strong>${c.user}:</strong> ${c.text}</li>`
                     ).join('')}
-                </u>
-                <div>
+                </ul>
+                <div style="display:flex; gap:8px; margin-top:10px;">
                     <input type="text" class="comment-input" placeholder="Write a comment...">
-                    <button class="comment-btn">Send</button>
+                    <button class="comment-btn"> <i class="fa-regular fa-paper-plane"></i> </button>
                 </div>
             </div>
         `;
 
-        const likebtn = postfd.querySelector('.like-btn');
+        
+        const likeBtn = postEl.querySelector('.like-btn');
         const likeCount = likeBtn.querySelector('.count');
-
-        likebtn.addEventListener('click', () => {
+        likeBtn.addEventListener('click', () => {
             if (!post.liked) {
-                post.likes++; post.liked=true;
-                likebtn.classList.add('liked');
+                post.likes++; post.liked = true;
+                likeBtn.classList.add('liked');
+                showNotification(`You liked ${post.userName}'s post`);
             } else {
                 post.likes--; post.liked = false;
                 likeBtn.classList.remove('liked');
             }
             likeCount.textContent = post.likes;
         });
-        //comment toggle (ki nenzel 3ala el btn ywali el comment section youthor)
-        const commentToggle = postfd.querySelector('.comment-toggle');
-        const commentSection = postfd.querySelector('.comment-section');
+
+        
+        const commentToggle = postEl.querySelector('.comment-toggle');
+        const commentSection = postEl.querySelector('.comment-section');
         const commentCount = commentToggle.querySelector('.count');
         commentToggle.addEventListener('click', () => {
             commentSection.style.display = commentSection.style.display === 'none' ? 'block' : 'none';
         });
 
-        const shareBtn = postfd.querySelector('.share-btn');
+        
+        const shareBtn = postEl.querySelector('.share-btn');
         const shareCount = shareBtn.querySelector('.count');
         shareBtn.addEventListener('click', () => {
             post.shares++;
             post.shared = true;
             shareBtn.classList.add('shared');
             shareCount.textContent = post.shares;
-            //copie lel post
+
+            
             navigator.clipboard.writeText(post.content + "\n— Shared from Jordal");
+            showNotification('Post shared! Text copied to clipboard');
         });
 
-        const commentInput = postfd.querySelector('.comment-input');
-        const commentBtn = postfd.querySelector('.comment-btn');
-        const commentList = postfd.querySelector('.comment-list');
+        
+        const commentInput = postEl.querySelector('.comment-input');
+        const commentBtn = postEl.querySelector('.comment-btn');
+        const commentList = postEl.querySelector('.comment-list');
 
         commentBtn.addEventListener('click', () => {
             if (commentInput.value.trim()) {
@@ -161,15 +167,18 @@ function renderposts(postsRend=allPosts) {
 
                 commentCount.textContent = post.comments.length;
                 commentInput.value = '';
+                showNotification('Comment added!');
             }
         });
-        feed.appendChild(postfd);
 
-
-
+        feed.appendChild(postEl);
     });
-    
 }
+
+
+
+
+
 
 document.getElementById('submit-btn').addEventListener('click', () => {
     const content = postBox.value.trim();
@@ -189,17 +198,9 @@ document.getElementById('submit-btn').addEventListener('click', () => {
     postBox.value = '';
     postBox.style.height = 'auto';
 
-    // If search is active, re-render with current filter
-    if (searchInput.value.trim()) {
-        searchInput.dispatchEvent(new Event('input'));
-    } else {
-        renderPosts();
-    }
 
-    feed.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 
-renderposts();
 
-
+renderPosts();

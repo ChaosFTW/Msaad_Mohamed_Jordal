@@ -12,6 +12,7 @@
     --third-bg-color: #222222;
     --mute: #555555;
     --main-color: #228B22;
+    --second-mute: #919191;
 }
 
 
@@ -263,6 +264,7 @@ main{
     width: 100px;
     font-size: 1rem;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 #image{
@@ -279,6 +281,172 @@ main{
 }
 
 
+
+.post {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    background-color: var(--second-bg-color);
+    border-radius: 25px;
+    margin-top: 20px;
+    padding: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.post-header{
+    display: flex;
+    align-items: center;
+}
+
+.post-user-img {
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.post-user-name {
+    color: white;
+    font-weight: bold;
+}
+
+.post-content {
+    color: white;
+    margin: 10px 0;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--third-bg-color);
+    margin-top: 15px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: var(--second-mute);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.action-btn:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+
+
+.like-btn {
+    background: none;
+    border: none;
+    color: var(--second-mute);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.like-btn.liked {
+    color: var(--main-color);
+    transform: scale(1.2);
+}
+
+.action-btn.liked {
+    color: #e74c3c !important;        
+}
+
+.action-btn .count {
+    font-size: 0.9rem;
+    color: white;
+}
+
+
+.comment-section {
+    margin-top: 10px;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 10px;
+}
+
+.comment-item {
+    color: white;
+    margin-bottom: 5px;
+    animation: slideIn 0.3s ease;
+}
+
+.comment-item {
+    color: white;
+    margin-bottom: 5px;
+    animation: slideIn 0.3s ease;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--third-bg-color);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    margin-top: 10px;
+}
+
+
+.comment-btn {
+    background-color: none;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.comment-btn:hover {
+    background-color: darken(var(--main-color), 10%);
+}
+
+
+
+
+.action-btn.share-btn {
+    color: var(--mute);
+}
+
+.action-btn.share-btn.shared {
+    color: #1da1f2;
+}
+
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes notifyIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes notifyOut {
+    to { opacity: 0; }
+}
 
 
 footer{
