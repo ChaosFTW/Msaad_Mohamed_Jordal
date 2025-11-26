@@ -35,7 +35,7 @@ const postsData = [
     {
         id: 2,
         userName: "Wassel the Judge",
-        userImg: "assests/image-user.jpeg",
+        userImg: "assests/wassel.jpeg",
         content: "Allah yahdik ya Araujo ama dima Barca on top w inchalah el 9adem 5ir",
         likes: 128,
         comments: [
@@ -45,7 +45,7 @@ const postsData = [
     {
         id: 3,
         userName: "You",
-        userImg: "assests/image-user.jpeg",
+        userImg: "assests/wassel.jpeg",
         content: "salem",
         likes: 416,
         comments: []
@@ -118,9 +118,9 @@ function renderPosts(postsToShow = allPosts) {
         const likeCount = likeBtn.querySelector('.count');
         likeBtn.addEventListener('click', () => {
             if (!post.liked) {
-                post.likes++; post.liked = true;
+                post.likes++; 
+                post.liked = true;
                 likeBtn.classList.add('liked');
-                showNotification(`You liked ${post.userName}'s post`);
             } else {
                 post.likes--; post.liked = false;
                 likeBtn.classList.remove('liked');

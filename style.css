@@ -232,7 +232,6 @@ main{
 
 .post-items{
     list-style-type: none; 
-
     display: flex; 
     gap: 30px;
 }
@@ -299,8 +298,8 @@ main{
 }
 
 .post-user-img {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     border-radius: 15px;
     margin-right: 10px;
 }
@@ -401,7 +400,7 @@ main{
 
 
 .comment-btn {
-    background-color: none;
+    background-color: var(--main-color);
     border: none;
     color: white;
     padding: 5px 10px;
@@ -415,12 +414,6 @@ main{
     background-color: darken(var(--main-color), 10%);
 }
 
-
-
-
-.action-btn.share-btn {
-    color: var(--mute);
-}
 
 .action-btn.share-btn.shared {
     color: #1da1f2;
