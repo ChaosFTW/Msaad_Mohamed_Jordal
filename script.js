@@ -24,7 +24,7 @@ const postsData = [
     {
         id: 1,
         userName: "Youssef nattoun",
-        userImg: "assests/wassel.jpeg",
+        userImg: "assests/nattoun.jpeg",
         content: "Just launched my new project! Feeling excited",
         likes: 42,
         comments: [
@@ -44,12 +44,100 @@ const postsData = [
     },
     {
         id: 3,
-        userName: "You",
-        userImg: "assests/wassel.jpeg",
-        content: "salem",
+        userName: "Mayara",
+        userImg: "https://veggiegardenseeds.com.au/cdn/shop/products/cosmos-fizzy-white-seeds.jpg?v=1742878353&width=1080",
+        content: "Be Happy",
         likes: 416,
         comments: []
-    }
+    },
+    {
+        id: 4,
+        userName: "Samsa",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMTQubvxPgMHH404qfADD8irp3ukS-bmwF5w&s",
+        content: "w Kima 9al el 3athim si 7amdi el 3o9 :'L ensen lbhim howa l9ari'",
+        likes: 1416,
+        comments: []
+    },
+    {
+        id: 5,
+        userName: "Mo2nes Sel3a b7ar 🌿",
+        userImg: "assests/moe.png",
+        content: "Chkoun men nebel y7ot 9alb",
+        likes: 2,
+        comments: [
+            { user: "Wassel the Judge", text: "Mouch Ena" },
+
+        ]
+    },
+    {
+        id: 6,
+        userName: "Kol chy",
+        userImg: "assests/wassel.jpeg",
+        content: "3acha el 9a2ed le 7or el watani ousema ben zittoun",
+        likes: 416,
+        comments: []
+    },
+    {
+        id: 7,
+        userName: "Zalabata 🦆",
+        userImg: "assests/wassel.jpeg",
+        content: "Batt sghir yetnazzah fel may ki sultan, w yenzel el cute level 100.",
+        likes: 16,
+        comments: []
+    },
+    {
+        id: 8,
+        userName: "Basmalah",
+        userImg: "assests/wassel.jpeg",
+        content: "el t9es el fatara hethy moch mte3 9raya mte3 rakcha fel dar weli m3aya y7ot like",
+        likes: 416,
+        shares : 12,
+        comments: []
+        
+    },
+    {
+        id: 9,
+        userName: "Bienco 🐱‍💻",
+        userImg: "assests/wassel.jpeg",
+        content: "Just Meow !😾",
+        likes: 416,
+        shares : 12,
+        comments: []
+
+    },
+    {
+        id: 8,
+        userName: "Red Melek",
+        userImg: "assests/wassel.jpeg",
+        content: "",
+        likes: 0,
+        shares : 1,
+        comments: []
+
+    },
+    {
+        id: 8,
+        userName: "Yessmine",
+        userImg: "assests/wassel.jpeg",
+        content: "tu connait que Le jaguar est le plus grand félin des Amériques et le troisième plus grand chat au monde (après le lion et le tigre).",
+        likes: 751,
+        shares : 89,
+        comments: []
+
+    },
+    {
+        id: 8,
+        userName: "El 9erch 🦈",
+        userImg: "assests/el 9erch.jpeg",
+        content: "M a7la el Mokasarat 🥜 m3a layli dawri abtal europa",
+        likes: 777,
+        shares : 77,
+        comments: [
+            { user: "Youssef Nattoun", text: "🙌🏿 السوال هل ستبقى المكسرات دائم متوفرة؟ " },
+            { user: "Aroujo 🐒", text: "1 2 3 Hala Madrid" },
+        ]
+
+    },
 ];
 
 let allPosts = [...postsData]; 
@@ -76,14 +164,19 @@ function renderPosts(postsToShow = allPosts) {
 
         postEl.innerHTML = `
             <div class="post-header">
-                <img class="post-user-img" src="${post.userImg}" alt="${post.userName}">
-                <span class="post-user-name">${post.userName}</span>
+                <div class="post-header-left">
+                    <img class="post-user-img" src="${post.userImg}" alt="${post.userName}">
+                    <span class="post-user-name">${post.userName}</span>
+                </div>
+                <div class="post-header-right">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
             </div>
             <p class="post-content">${post.content}</p>
 
             <!-- Like + Comment + Share avec compteur -->
             <div class="post-actions">
-                <button class="action-btn like-btn ${post.liked ? 'liked' : ''}">
+                <button class="action-btn like-btn ${post.liked ? 'post-liked' : ''}">
                     <i class="fas fa-heart"></i>
                     <span class="count">${post.likes}</span>
                 </button>
@@ -120,10 +213,11 @@ function renderPosts(postsToShow = allPosts) {
             if (!post.liked) {
                 post.likes++; 
                 post.liked = true;
-                likeBtn.classList.add('liked');
+                likeBtn.classList.add('post-liked');
+                showNotification(`You liked ${post.userName}'s post`);
             } else {
                 post.likes--; post.liked = false;
-                likeBtn.classList.remove('liked');
+                likeBtn.classList.remove('post-liked');
             }
             likeCount.textContent = post.likes;
         });
@@ -178,8 +272,6 @@ function renderPosts(postsToShow = allPosts) {
 
 
 
-
-
 document.getElementById('submit-btn').addEventListener('click', () => {
     const content = postBox.value.trim();
     if (!content) return;
@@ -191,15 +283,26 @@ document.getElementById('submit-btn').addEventListener('click', () => {
         content: content,
         likes: 0,
         liked: false,
+        shares: 0,
+        shared: false,
         comments: []
     };
 
-    allPosts.unshift(newPost);
+    allPosts.unshift(newPost);        
+    renderPosts();                    
     postBox.value = '';
     postBox.style.height = 'auto';
-
-
+    showNotification('Post published successfully!');
+    window.scrollTo({ top: 0, behavior: 'smooth' });  
 });
+
+function showNotification(msg) {
+    const notif = document.createElement('div');
+    notif.className = 'notification';
+    notif.textContent = msg;
+    document.getElementById('notifications').appendChild(notif);
+    setTimeout(() => notif.remove(), 50000);
+}
 
 
 
