@@ -28,12 +28,14 @@ header{
     justify-content: space-between;
     top: 0;
     left: 0;
+    z-index: 100;
     position: sticky;
     background: var(--bg-color);
     display: flex;
     align-items: center;
     width: 100%;
     padding: 15px;
+    height: 100px;
 
 }
 
@@ -157,22 +159,31 @@ main{
 }
 
 .page-left {
-    flex: 0 0 25%;     flex: 0 0 25%;   /* 30% width, no grow, no shrink */
+    flex: 0 0 25%;   
     padding: 20px;
     overflow-y: auto;
+    position: sticky;
+    overflow: hidden;
+    top: 100px;
+    height: calc(100vh - 100px);
   }
 
 .page-middle {
-    flex: 0 0 50%;   /* 40% width */
+    flex: 0 0 55%;   
     padding: 20px;
-
     overflow-y: auto;
+    scroll-behavior: smooth;
   }
 
 .page-right {
-    flex: 0 0 25%;   /* 30% width */
+    flex: 0 0 20%;   
     padding: 20px;
     overflow-y: auto;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    background-color: #1da1f2;
   }
 
 
@@ -182,7 +193,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 700px;
+    width: 800px;
     background-color: var(--second-bg-color);
     border-radius:25px ;
 }
@@ -194,6 +205,9 @@ main{
 
 
 }
+
+
+
 
 #img-user{
     margin: 15px;
@@ -218,7 +232,7 @@ main{
 .post-input{
     display: flex;
     align-items: center;
-    width: 520px;
+    width: 620px;
     max-height: 60px;
     background-color: var(--third-bg-color);
     padding: 20px;
@@ -308,7 +322,7 @@ main{
 .post {
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 800px;
     background-color: var(--second-bg-color);
     border-radius: 25px;
     margin-top: 20px;
@@ -490,6 +504,7 @@ main{
     flex-direction: column;
     justify-content: space-between ;
     align-items: center;
+
 }
 
 
@@ -499,19 +514,110 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     background-color: var(--second-bg-color);
+    border-radius: 25px;
+    height: 400px;
+
+}
+
+
+
+
+
+.profile-upper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
 .profile-stat{
     display: flex;
+    gap: 150px;
     align-items: center;
+    
 
 }
 
-.img-profile{
-    width: 80px;
+
+
+
+.photo-stack {
+    position: relative;
+    display: inline-block;                   
+  }
+
+.photo-stack .back {
+    width: 350px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+
+
+.photo-stack .img-profile {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 6px solid var(--second-bg-color);
+    border-radius: 20px;
+    bottom: -60px;      
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  }
+
+
+.stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
 }
+
+.stats-label{
+    color: #5f5f5f;
+    font-size: 0.8rem;
+}
+.stats-num{
+    color: white;
+    font-size: 1.8rem;
+}
+
+.nick-name{
+    color: white;
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.user-name{
+    color: #5f5f5f;
+    font-size: 1rem;
+}
+
+
+.profile-btn{
+    color: #858585;
+    font-size: 1rem;
+    height: 50px;
+    width: 300px;
+    background-color: #2f2f2f;
+    border: none;
+    border-radius: 10px;
+    margin: 20px;
+    cursor: pointer;
+
+}
+
+.profile-disc{
+    color: white;
+    text-align: center;
+
+}
+
 
 
 #notifications {
@@ -531,6 +637,49 @@ main{
     animation: notifyIn 0.5s ease, notifyOut 0.5s ease 4s forwards;
     opacity: 1;
     box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.generes-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+.pills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: left;
+    align-items: center;
+  }
+.pill {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+.pill:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+
+
+.generes {
+    font-size: 1.8rem;
+    color: white;
+    text-align: left;
+    margin: 10px;
 }
 
 

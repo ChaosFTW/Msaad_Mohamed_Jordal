@@ -34,7 +34,7 @@ const postsData = [
     },
     {
         id: 2,
-        userName: "Wassel the Judge",
+        userName: "Wassel the Judge ",
         userImg: "assests/wassel.jpeg",
         content: "Allah yahdik ya Araujo ama dima Barca on top w inchalah el 9adem 5ir",
         likes: 128,
