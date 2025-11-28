@@ -10,6 +10,7 @@ items.forEach(item => {
 
 
 const postBox = document.getElementById("postBox");
+const searchInput = document.getElementById('search');
 
 postBox.addEventListener("input", () => {
     postBox.style.height = "auto";                     
@@ -149,7 +150,7 @@ function renderPosts(postsToShow = allPosts) {
     feed.innerHTML = '';
 
     if (postsToShow.length === 0) {
-        feed.innerHTML = '<div class="no-results">No posts found</div>';
+        feed.innerHTML = '<div class="no-results">No Jordals found</div>';
         return;
     }
 
@@ -166,13 +167,13 @@ function renderPosts(postsToShow = allPosts) {
             <div class="post-header">
                 <div class="post-header-left">
                     <img class="post-user-img" src="${post.userImg}" alt="${post.userName}">
-                    <span class="post-user-name">${post.userName}</span>
+                    <span class="post-user-name">${highlightText(post.userName, searchInput.value)}</span>
                 </div>
                 <div class="post-header-right">
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
             </div>
-            <p class="post-content">${post.content}</p>
+            <p class="post-content">${highlightText(post.content, searchInput.value)}</p>
 
             <!-- Like + Comment + Share avec compteur -->
             <div class="post-actions">
@@ -196,7 +197,7 @@ function renderPosts(postsToShow = allPosts) {
             <div class="comment-section" style="display: none;">
                 <ul class="comment-list">
                     ${post.comments.map(c => 
-                        `<li class="comment-item"><strong>${c.user}:</strong> ${c.text}</li>`
+                        `<li class="comment-item"><strong>${highlightText(c.user, searchInput.value)}:</strong> ${highlightText(c.text, searchInput.value)}</li>`
                     ).join('')}
                 </ul>
                 <div style="display:flex; gap:8px; margin-top:10px;">
@@ -303,6 +304,34 @@ function showNotification(msg) {
     document.getElementById('notifications').appendChild(notif);
     setTimeout(() => notif.remove(), 50000);
 }
+
+
+
+
+
+function highlightText(text, query) {
+    if (!query.trim()) return text;
+    const regex = new RegExp(`(${query.trim()})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+}
+
+
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+
+    const filtered = allPosts.filter(post =>
+        post.userName.toLowerCase().includes(query) ||
+        post.content.toLowerCase().includes(query) ||
+        post.comments.some(c =>
+            c.user.toLowerCase().includes(query) ||
+            c.text.toLowerCase().includes(query)
+        )
+    );
+
+    renderPosts(filtered);
+});
+
+
 
 
 

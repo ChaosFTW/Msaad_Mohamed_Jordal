@@ -683,6 +683,22 @@ main{
 }
 
 
+.highlight {
+    background-color: rgba(34, 139, 34, 0.3);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+
+.no-results {
+    text-align: center;
+    color: var(--mute);
+    font-size: 1.2rem;
+    margin: 40px 0;
+    animation: fadeIn 0.5s ease;
+}
+
+
 
 
 footer{
