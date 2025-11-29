@@ -73,7 +73,7 @@ const postsData = [
     {
         id: 6,
         userName: "Kol chy",
-        userImg: "assests/wassel.jpeg",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_WP-bsGuwntPvDduT9Xk7c7YJd60g381bsQ&s",
         content: "3acha el 9a2ed le 7or el watani ousema ben zittoun",
         likes: 416,
         comments: []
@@ -81,7 +81,7 @@ const postsData = [
     {
         id: 7,
         userName: "Zalabata 🦆",
-        userImg: "assests/wassel.jpeg",
+        userImg: "https://i.redd.it/ive-been-told-im-this-donald-duck-meme-when-im-woken-up-so-v0-qa0ego0hrjjc1.jpg?width=509&format=pjpg&auto=webp&s=be3e21e7505d0760aa79de955cb132b4ba213e3a",
         content: "Batt sghir yetnazzah fel may ki sultan, w yenzel el cute level 100.",
         likes: 16,
         comments: []
@@ -89,7 +89,7 @@ const postsData = [
     {
         id: 8,
         userName: "Basmalah",
-        userImg: "assests/wassel.jpeg",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0N2l3nRjb9Pt6DIXKyPdymvCN27i0z_UZDQ&s",
         content: "el t9es el fatara hethy moch mte3 9raya mte3 rakcha fel dar weli m3aya y7ot like",
         likes: 416,
         shares : 12,
@@ -99,7 +99,7 @@ const postsData = [
     {
         id: 9,
         userName: "Bienco 🐱‍💻",
-        userImg: "assests/wassel.jpeg",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5_n3cKRgSqfPFhO3P3PJs6lu9F6qdfB7xGA&s",
         content: "Just Meow !😾",
         likes: 416,
         shares : 12,
@@ -109,7 +109,7 @@ const postsData = [
     {
         id: 8,
         userName: "Red Melek",
-        userImg: "assests/wassel.jpeg",
+        userImg: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2B3O4znDL0o27Rb5uMXnf4ulGaP039VDx881JGTZ7H-3M0P5VPJscBe6TmFX7SDe3ZxWKeySl-THC6IRfx-JebHIGmLjUwaGj604fddBFuNokA9_b2X_oHY1xzk6C4hwnQw9_iHlfYB9_/s1600/photo.jpg",
         content: "",
         likes: 0,
         shares : 1,
@@ -119,7 +119,7 @@ const postsData = [
     {
         id: 8,
         userName: "Yessmine",
-        userImg: "assests/wassel.jpeg",
+        userImg: "https://lumenor.ai/cdn-cgi/imagedelivery/F5KOmplEz0rStV2qDKhYag/44b2a668-6dde-415e-4a4e-797ebefdc500/tn",
         content: "tu connait que Le jaguar est le plus grand félin des Amériques et le troisième plus grand chat au monde (après le lion et le tigre).",
         likes: 751,
         shares : 89,
