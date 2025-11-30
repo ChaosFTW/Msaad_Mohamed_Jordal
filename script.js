@@ -107,7 +107,7 @@ const postsData = [
 
     },
     {
-        id: 8,
+        id: 10,
         userName: "Red Melek",
         userImg: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2B3O4znDL0o27Rb5uMXnf4ulGaP039VDx881JGTZ7H-3M0P5VPJscBe6TmFX7SDe3ZxWKeySl-THC6IRfx-JebHIGmLjUwaGj604fddBFuNokA9_b2X_oHY1xzk6C4hwnQw9_iHlfYB9_/s1600/photo.jpg",
         content: "",
@@ -117,7 +117,7 @@ const postsData = [
 
     },
     {
-        id: 8,
+        id: 11,
         userName: "Yessmine",
         userImg: "https://lumenor.ai/cdn-cgi/imagedelivery/F5KOmplEz0rStV2qDKhYag/44b2a668-6dde-415e-4a4e-797ebefdc500/tn",
         content: "tu connait que Le jaguar est le plus grand félin des Amériques et le troisième plus grand chat au monde (après le lion et le tigre).",
@@ -127,12 +127,38 @@ const postsData = [
 
     },
     {
-        id: 8,
+        id: 12,
         userName: "El 9erch 🦈",
         userImg: "assests/el 9erch.jpeg",
         content: "M a7la el Mokasarat 🥜 m3a layli dawri abtal europa",
         likes: 777,
         shares : 77,
+        comments: [
+            { user: "Youssef Nattoun", text: "🙌🏿 السوال هل ستبقى المكسرات دائم متوفرة؟ " },
+            { user: "Aroujo 🐒", text: "1 2 3 Hala Madrid" },
+        ]
+
+    },
+    {
+        id: 13,
+        userName: "Bou7mid 🐬",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNHJTuiX6UgXJmC3EmEYqy2brf6GeWTAwPRw&s",
+        content: "CA Bizertin fel div 12  raby yhadik ya el7idosi ama 9ila bech ne9leb CSS w #CSS",
+        likes: 140,
+        shares : 17,
+        comments: [
+            { user: "Youssef Nattoun", text: "🙌🏿 السوال هل ستبقى المكسرات دائم متوفرة؟ " },
+            { user: "Aroujo 🐒", text: "1 2 3 Hala Madrid" },
+        ]
+
+    },
+    {
+        id: 14,
+        userName: "Hedi bedi Kromb zebdi",
+        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGfinGdyoDxNJmNocL3-LiX1X3iSGp2mapQ&s",
+        content: "test .",
+        likes: 69,
+        shares : 96,
         comments: [
             { user: "Youssef Nattoun", text: "🙌🏿 السوال هل ستبقى المكسرات دائم متوفرة؟ " },
             { user: "Aroujo 🐒", text: "1 2 3 Hala Madrid" },

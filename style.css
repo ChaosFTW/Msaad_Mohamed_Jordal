@@ -722,7 +722,7 @@ main{
 
 
 .spons-img{
-    width: 150px;
+    width: 100px;
     border-radius: 15px;
 }
 
@@ -746,6 +746,59 @@ main{
 }
 
 
+
+
+
+
+.suggest img{
+    width: 43px;
+    height: 43px;
+    border-radius: 10px;
+    border: 3px solid var(--mute); 
+    
+}
+
+
+.suggest {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+
+
+.suggest-user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+
+.suggest button{
+    background-color: var(--main-color);
+    border: none;
+    padding: 5px;
+    border-radius: 15px;
+    color: white;
+    width: 60px;
+    cursor: pointer;
+}
+
+
+.suggests-section h3{
+    color: white;
+    padding: 10px;
+}
+
+
+
+.suggest:hover{
+    background-color: var(--second-bg-color);
+    border-radius: 15px;
+
+}
 
 footer{
     bottom: 0;
