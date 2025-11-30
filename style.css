@@ -885,7 +885,7 @@ main{
         font-size: 1.15rem;
         resize: none;
         outline: none;
-        max-height: 160px;
+        max-height: 180px;
         overflow-y: auto;
     }
 
@@ -895,14 +895,16 @@ main{
     }
 
 
+    .emoji,
     .post-lower,
     .post-items {
         display: none !important;
     }
 
+
     .post-lower {
         display: block !important;
-        justify-content: flex-start !important;
+        justify-content: flex-end !important;
         margin-top: 12px;
         padding: 0 10px;
     }
@@ -925,7 +927,6 @@ main{
         background: #1e7a1e;
         transform: translateY(-1px);
     }
-
 
     #submit-btn:disabled {
         background: #444;
