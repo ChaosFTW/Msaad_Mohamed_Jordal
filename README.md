@@ -1,6 +1,6 @@
 # Jordal – Mini Réseau Social (Frontend Only)
 
-![Jordal Preview](https://drive.google.com/file/d/1SUy__o6ljQ94ntrOHYWptxG0OgkxP3N0/view?usp=sharing)  
+![Jordal Preview](https://cdn.discordapp.com/attachments/1376729097627111476/1444806198158430228/logo.png?ex=692e0c20&is=692cbaa0&hm=cf0dc3a5868ae9b681376298ad08c9c678d6f484ca3c7f3079e67da7430e3bf7&)  
 *Un petit réseau social 100 % frontend, esthétique et interactif – inspiré des grands mais en mode "fait maison"*
 
 **Jordal** est un mini réseau social entièrement développé en HTML, CSS et JavaScript vanilla (sans framework). Il simule une expérience complète : création de posts, likes, commentaires, partage, recherche en temps réel, notifications toast et animations fluides.
