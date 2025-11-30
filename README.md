@@ -5,7 +5,7 @@
 
 **Jordal** est un mini réseau social entièrement développé en HTML, CSS et JavaScript vanilla (sans framework). Il simule une expérience complète : création de posts, likes, commentaires, partage, recherche en temps réel, notifications toast et animations fluides.
 
-Live Demo → [https://ton-pseudo.github.io/jordal](https://ton-pseudo.github.io/jordal) *(remplace par ton vrai lien GitHub Pages)*
+Live Demo → [https://chaosftw.github.io/Msaad_Mohamed_Jordal/](https://chaosftw.github.io/Msaad_Mohamed_Jordal/) 
 
 ---
 
