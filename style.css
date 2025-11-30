@@ -800,6 +800,13 @@ main{
 
 }
 
+.page-right hr {
+    border: none;             
+    height: 1px;                    
+    background-color: var(--mute);       
+
+}
+
 footer{
     bottom: 0;
     background-color: black ;
