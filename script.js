@@ -267,7 +267,7 @@ function renderPosts(postsToShow = allPosts) {
             shareCount.textContent = post.shares;
 
             
-            navigator.clipboard.writeText(post.content + "\n— Shared from Jordal");
+            navigator.clipboard.writeText(post.content + "\n Shared from Jordal");
             showNotification('Post shared! Text copied to clipboard');
         });
 
@@ -362,3 +362,9 @@ searchInput.addEventListener('input', () => {
 
 
 renderPosts();
+
+const flw=document.getElementById("flw")
+
+flw.addEventListener('click', () => {
+    showNotification("followed successfully !");
+});
